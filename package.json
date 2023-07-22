@@ -1,0 +1,36 @@
+{
+  "name": "apollo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^4.23.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.1",
+    "@next/font": "^13.4.12",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "axios": "^1.4.0",
+    "hnswlib-node": "^1.4.2",
+    "langchain": "^0.0.102",
+    "next": "^13.1.1",
+    "openai": "^3.1.0",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.8.162",
+    "playwright": "^1.36.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "react-markdown": "^8.0.7"
+  },
+  "devDependencies": {
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.12"
+  }
+}
