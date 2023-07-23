@@ -3,14 +3,14 @@ import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nex
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ClerkProvider {...pageProps} publishableKey="pk_test_ZXZvbHZlZC1nYW5uZXQtNTcuY2xlcmsuYWNjb3VudHMuZGV2JA">
-      <SignedIn>
+    // <ClerkProvider {...pageProps}>
+    //   <SignedIn>
         <Component {...pageProps} />
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-    </ClerkProvider>
+    //   </SignedIn>
+    //   <SignedOut>
+    //     <RedirectToSignIn />
+    //   </SignedOut>
+    // </ClerkProvider>
   );
 }
 
