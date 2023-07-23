@@ -12,6 +12,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 import { SignOutButton, useAuth, useClerk } from "@clerk/nextjs";
 import { RxCross1 } from "react-icons/rx";
 import { GoSignOut } from 'react-icons/go';
+import Link from 'next/link';
 
 
 const SignOutBtn = () => {
@@ -154,11 +155,11 @@ export default function PDFViewer() {
             </Head>
             <div className={styles.topnav}>
                 <div className = {styles.navlogo}>
-                    <a href="/">Apollo</a>
+                    <Link href="/">Apollo</Link>
                 </div>
                 <div className = {styles.navlinks}>
-                    <a href="/">Websites</a>
-                    <a href="/pdf">PDFs</a>
+                    <Link href="/">Websites</Link>
+                    <Link href="/pdf">PDFs</Link>
                     <SignOutBtn />
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
 import { FiUpload } from "react-icons/fi";
@@ -135,11 +136,11 @@ export default function Home() {
       </Head>
       <div className={styles.topnav}>
         <div className = {styles.navlogo}>
-        <a href="/">Apollo</a>
+        <Link href="/">Apollo</Link>
         </div>
         <div className = {styles.navlinks}>
-          <a href="/">Websites</a>
-          <a href="/pdf">PDFs</a>
+          <Link href="/">Websites</Link>
+          <Link href="/pdf">PDFs</Link>
           <SignOutBtn />
         </div>
       </div>
