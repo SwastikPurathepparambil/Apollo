@@ -158,7 +158,7 @@ export default function Home() {
 
         <br /><br />
 
-        <iframe id={styles.myiframe} src={currentSrc} title="Website Frame" />
+        <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" id={styles.myiframe} src={currentSrc} title="Website Frame" />
       </div>
       <div className={styles.mainSubTwo}>
         <div className = {styles.cloud}>
