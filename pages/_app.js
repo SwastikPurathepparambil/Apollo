@@ -3,7 +3,7 @@ import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nex
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ClerkProvider {...pageProps} publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider {...pageProps} publishableKey="pk_test_ZXZvbHZlZC1nYW5uZXQtNTcuY2xlcmsuYWNjb3VudHMuZGV2JA">
       <SignedIn>
         <Component {...pageProps} />
       </SignedIn>
