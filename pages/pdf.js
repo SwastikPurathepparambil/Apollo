@@ -125,6 +125,16 @@ export default function PDFViewer() {
         });
         console.log(response);
     
+        // Handle errors
+        const handleError = () => { 
+          function errorHandling() {
+            setMessages((prevMessages) => [...prevMessages, { "message": "There seems to be an error", "type": "apiMessage"}]);
+            setLoading(false);
+            setUserInput("");
+          }
+          errorHandling();
+        }
+
         if (!response.ok) {
           handleError();
           return;

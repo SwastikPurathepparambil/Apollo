@@ -48,15 +48,12 @@ export default function Home() {
   
   // Handle errors
   const handleError = () => { 
-    setTimeout(
-      errorHandling, 2000
-    )
-    
     function errorHandling() {
-      setMessages((prevMessages) => [...prevMessages, { "message": "The Law Program at the University of Pennsylvania cultivates a collaborative community by organizing shared experiences that bring people together. Additionally, the program offers an interdisciplinary approach, allowing students to pursue the study of law while engaging with various departments across Penn such as business, technology and intellectual property, criminal justice", "type": "apiMessage"}]);
+      setMessages((prevMessages) => [...prevMessages, { "message": "There seems to be an error", "type": "apiMessage"}]);
       setLoading(false);
       setUserInput("");
     }
+    errorHandling();
   }
 
   const handleWebChange = (event) => {
