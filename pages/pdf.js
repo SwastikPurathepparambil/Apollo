@@ -170,7 +170,7 @@ export default function PDFViewer() {
                 <title>Apollo</title>
                 <meta name="description" content="EffiLex Website Reader" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/navicon.ico" />
+                <link rel="icon" href="/nav.png" />
             </Head>
             <div className={styles.topnav}>
                 <div className = {styles.navlogo}>
@@ -214,7 +214,7 @@ export default function PDFViewer() {
               // The latest message sent by the user will be animated while waiting for a response
                 <div key = {index} className = {message.type === "userMessage" && loading && index === messages.length - 1  ? styles.usermessagewaiting : message.type === "apiMessage" ? styles.apimessage : styles.usermessage}>
                   {/* Display the correct icon depending on the message type */}
-                  {message.type === "apiMessage" ? <Image src = "/navicon.ico" alt = "AI" width = "30" height = "30" className = {styles.boticon} priority = {true} /> : <Image src = "/usericon.png" alt = "Me" width = "30" height = "30" className = {styles.usericon} priority = {true} />}
+                  {message.type === "apiMessage" ? <Image src = "/nav.png" alt = "AI" width = "30" height = "30" className = {styles.boticon} priority = {true} /> : <Image src = "/usericon.png" alt = "Me" width = "30" height = "30" className = {styles.usericon} priority = {true} />}
                 <div className = {styles.markdownanswer}>
                   {/* Messages are being rendered in Markdown format */}
                   <ReactMarkdown linkTarget = {"_blank"}>{message.message}</ReactMarkdown>
