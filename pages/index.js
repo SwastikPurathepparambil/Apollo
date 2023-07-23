@@ -84,7 +84,7 @@ export default function Home() {
       body: JSON.stringify({ question: userInput, webUrl: websiteUrl}),
     });
     // const response = await fetch("http://localhost:3000/api/chat");
-
+    console.log(response);
     if (!response.ok) {
       handleError();
       return;
