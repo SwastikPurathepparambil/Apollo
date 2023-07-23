@@ -22,7 +22,7 @@ async function runQA(query, link) {
   });
     
   // Load the documents and create the vector store
-  const loader = new PlaywrightWebBaseLoader(
+  const loader = new CheerioWebBaseLoader(
       link
   );
     

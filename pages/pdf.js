@@ -89,6 +89,16 @@ export default function PDFViewer() {
         }
     }
 
+    // Handle errors
+    const handleError = () => { 
+      function errorHandling() {
+        setMessages((prevMessages) => [...prevMessages, { "message": "There seems to be an error", "type": "apiMessage"}]);
+        setLoading(false);
+        setUserInput("");
+      }
+      errorHandling();
+    }
+
     const removeCurrentPDF = (e) => {
         e.preventDefault();
         setPdfFile(null);
@@ -113,46 +123,42 @@ export default function PDFViewer() {
     
         setLoading(true);
         setMessages((prevMessages) => [...prevMessages, { "message": userInput, "type": "userMessage" }]);
-        const formData = new FormData();
-        formData.append('file', fileInputRef.current.files[0]);
-        formData.append('question', userInput);
-        formData.append('filename', "pdfFile");
-
-        // // Send user question and history to API
-        const response = await fetch('/api/pdfchat', {
-          method: 'POST',
-          body: formData,
-        });
-        console.log(response);
-    
-        // Handle errors
-        const handleError = () => { 
-          function errorHandling() {
-            setMessages((prevMessages) => [...prevMessages, { "message": "There seems to be an error", "type": "apiMessage"}]);
-            setLoading(false);
-            setUserInput("");
+        
+        if (selectedPdfFile.size > 3145728) {
+          setMessages((prevMessages) => [...prevMessages, { "message": "This file is too large. While the developers are working on increasing file size, please refrain from using files above 3 MB. Thank you!", "type": "apiMessage" }]);
+          setLoading(false);
+        } else {
+          const formData = new FormData();
+          formData.append('file', fileInputRef.current.files[0]);
+          formData.append('question', userInput);
+          formData.append('filename', "pdfFile");
+  
+          // // Send user question and history to API
+          const response = await fetch('/api/pdfchat', {
+            method: 'POST',
+            body: formData,
+          });
+          console.log(response);
+      
+  
+          if (!response.ok) {
+            handleError();
+            return;
           }
-          errorHandling();
+      
+          // Reset user input
+          setUserInput("");
+          const data = await response.json();
+          
+      
+          if (data.result.error === "Unauthorized") {
+            handleError();
+            return;
+          }
+      
+          setMessages((prevMessages) => [...prevMessages, { "message": data["result"]["text"], "type": "apiMessage" }]);
+          setLoading(false);
         }
-
-        if (!response.ok) {
-          handleError();
-          return;
-        }
-    
-        // Reset user input
-        setUserInput("");
-        const data = await response.json();
-        
-    
-        if (data.result.error === "Unauthorized") {
-          handleError();
-          return;
-        }
-    
-        setMessages((prevMessages) => [...prevMessages, { "message": data["result"]["text"], "type": "apiMessage" }]);
-        setLoading(false);
-        
     };
 
     return (
