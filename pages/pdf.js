@@ -9,8 +9,17 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css'
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
-import { useAuth } from "@clerk/nextjs";
+import { SignOutButton, useAuth, useClerk } from "@clerk/nextjs";
 import { RxCross1 } from "react-icons/rx";
+import { GoSignOut } from 'react-icons/go';
+
+
+const SignOutBtn = () => {
+  const { signOut } = useClerk();
+  return (
+    <GoSignOut onClick={() => signOut()} /> 
+  );
+};
 
 export default function PDFViewer() {
     
@@ -150,6 +159,7 @@ export default function PDFViewer() {
                 <div className = {styles.navlinks}>
                     <a href="/">Websites</a>
                     <a href="/pdf">PDFs</a>
+                    <SignOutBtn />
                 </div>
             </div>
             <main className={styles.main}>
