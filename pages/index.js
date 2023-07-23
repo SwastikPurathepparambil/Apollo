@@ -75,33 +75,39 @@ export default function Home() {
     setLoading(true);
     setMessages((prevMessages) => [...prevMessages, { "message": userInput, "type": "userMessage" }]);
 
-    // // Send user question and history to API
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ question: userInput, webUrl: websiteUrl}),
-    });
-    // const response = await fetch("http://localhost:3000/api/chat");
-    console.log(response);
-    if (!response.ok) {
-      handleError();
-      return;
-    }
+    if (!websiteUrl) {
+      setMessages((prevMessages) => [...prevMessages, { "message": "Please input a website before asking a question.", "type": "apiMessage" }]);
+      setLoading(false);
+    } else {
+      // // Send user question and history to API
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question: userInput, webUrl: websiteUrl}),
+      });
+      // const response = await fetch("http://localhost:3000/api/chat");
+      console.log(response);
+      if (!response.ok) {
+        handleError();
+        return;
+      }
 
-    // Reset user input
-    setUserInput("");
-    const data = await response.json();
+      // Reset user input
+      setUserInput("");
+      const data = await response.json();
+
+
+      if (data.result.error === "Unauthorized") {
+        handleError();
+        return;
+      }
+
+      setMessages((prevMessages) => [...prevMessages, { "message": data["result"]["text"], "type": "apiMessage" }]);
+      setLoading(false);
+    }
     
-
-    if (data.result.error === "Unauthorized") {
-      handleError();
-      return;
-    }
-
-    setMessages((prevMessages) => [...prevMessages, { "message": data["result"]["text"], "type": "apiMessage" }]);
-    setLoading(false);
     
   };
 

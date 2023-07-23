@@ -124,7 +124,10 @@ export default function PDFViewer() {
         setLoading(true);
         setMessages((prevMessages) => [...prevMessages, { "message": userInput, "type": "userMessage" }]);
         
-        if (selectedPdfFile.size > 3145728) {
+        if (!selectedPdfFile) {
+          setMessages((prevMessages) => [...prevMessages, { "message": "Please upload a pdf file.", "type": "apiMessage" }]);
+          setLoading(false);
+        } else if (selectedPdfFile.size > 3145728) {
           setMessages((prevMessages) => [...prevMessages, { "message": "This file is too large. While the developers are working on increasing file size, please refrain from using files above 3 MB. Thank you!", "type": "apiMessage" }]);
           setLoading(false);
         } else {
