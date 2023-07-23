@@ -79,7 +79,7 @@ export default function Home() {
     setMessages((prevMessages) => [...prevMessages, { "message": userInput, "type": "userMessage" }]);
 
     // // Send user question and history to API
-    const response = await fetch("http://localhost:3000/api/chat", {
+    const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
