@@ -6,15 +6,15 @@ import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
 import { FiUpload } from "react-icons/fi";
-// import { SignOutButton, useClerk } from '@clerk/nextjs'
+import { SignOutButton, useClerk } from '@clerk/nextjs'
 import { GoSignOut } from "react-icons/go";
 
-// const SignOutBtn = () => {
-//   const { signOut } = useClerk();
-//   return (
-//     <GoSignOut onClick={() => signOut()} /> 
-//   );
-// };
+const SignOutBtn = () => {
+  const { signOut } = useClerk();
+  return (
+    <GoSignOut onClick={() => signOut()} /> 
+  );
+};
 
 
 export default function Home() {
@@ -144,7 +144,7 @@ export default function Home() {
         <div className = {styles.navlinks}>
           <Link href="/">Websites</Link>
           <Link href="/pdf">PDFs</Link>
-          {/* <SignOutBtn /> */}
+          <SignOutBtn />
         </div>
       </div>
       

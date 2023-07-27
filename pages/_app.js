@@ -3,14 +3,14 @@ import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nex
 
 function MyApp({ Component, pageProps }) {
   return (
-    // <ClerkProvider {...pageProps}>
-    //   <SignedIn>
+    <ClerkProvider {...pageProps}>
+      <SignedIn>
         <Component {...pageProps} />
-    //   </SignedIn>
-    //   <SignedOut>
-    //     <RedirectToSignIn />
-    //   </SignedOut>
-    // </ClerkProvider>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </ClerkProvider>
   );
 }
 
