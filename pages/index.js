@@ -132,16 +132,17 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Apollo</title>
+        <title>LineaSpace</title>
         <meta name="description" content="EffiLex Website Reader" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/nav.png" />
       </Head>
       <div className={styles.topnav}>
         <div className = {styles.navlogo}>
-        <Link href="/">Apollo</Link>
+        <Link href="/">LineaSpace</Link>
         </div>
         <div className = {styles.navlinks}>
+          {/* <Link href="/notes">Notes</Link> */}
           <Link href="/">Websites</Link>
           <Link href="/pdf">PDFs</Link>
           <SignOutBtn />
